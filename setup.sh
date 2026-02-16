@@ -540,6 +540,37 @@ EOF
   echo -e "\033[46;37mClash Verge 安装和自启动配置完成。\033[0m"
 }
 
+# Function to install Clash CLI (无界面版本，适用于服务器/无GUI环境)
+install_clash_cli() {
+  echo -e "\033[46;37mInstalling Clash for Linux (CLI, 无界面版本)...\033[0m"
+
+  CLASH_CLI_DIR="/opt/clash-for-linux"
+
+  # 清理旧安装
+  if [ -d "$CLASH_CLI_DIR" ]; then
+    echo -e "\033[43;37m检测到已有安装，先清理...\033[0m"
+    sudo rm -rf "$CLASH_CLI_DIR"
+  fi
+
+  # 克隆仓库
+  git clone --branch master --depth 1 https://gh-proxy.org/https://github.com/nelvko/clash-for-linux-install.git "$CLASH_CLI_DIR"
+  if [ $? -ne 0 ]; then
+    echo -e "\033[41;37m克隆失败，尝试不使用代理直接克隆...\033[0m"
+    git clone --branch master --depth 1 https://github.com/nelvko/clash-for-linux-install.git "$CLASH_CLI_DIR"
+    if [ $? -ne 0 ]; then
+      echo -e "\033[41;37mClash CLI 下载失败，请检查网络连接。\033[0m"
+      return 1
+    fi
+  fi
+
+  # 执行安装脚本
+  cd "$CLASH_CLI_DIR" && sudo bash install.sh
+  cd - > /dev/null
+
+  echo -e "\033[46;37mClash CLI (无界面版本) 安装完成。\033[0m"
+  echo -e "\033[46;37m安装目录: $CLASH_CLI_DIR\033[0m"
+  echo -e "\033[46;37m如需配置订阅，请编辑 $CLASH_CLI_DIR 下的配置文件。\033[0m"
+}
 
 # Function to install PyCharm
 install_pycharm() {
@@ -867,7 +898,8 @@ echo  -e "\033[34m 这里是主程序，具体是----------
 35：  安装 CUDA 11.8 (可选，支持TensorRT8.7和cudnn 8.7)
 36：  安装 CUDA 12.2 (可选)
 37：  安装 stress (Linux压力测试工具，默认安装)
-38：  安装 btop (美观的系统监控工具，默认安装)\033[0m"
+38：  安装 btop (美观的系统监控工具，默认安装)
+39：  安装 Clash CLI (无界面版本，适用于服务器/无GUI环境，可选)\033[0m"
 
 
 echo  -e "\033[34m 请根据需要输入对应的数字，多个数字之间用空格隔开，回车默认安装所有工具\033[0m"
@@ -1027,6 +1059,10 @@ else
       38)
         update_system
         install_btop
+        ;;
+      39)
+        update_system
+        install_clash_cli
         ;;
       *)
         echo "Unknown option: $arg"
