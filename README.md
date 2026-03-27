@@ -1,9 +1,8 @@
-# UbuntuAutoScript
-Linux Auto Configuration Script- Linux 软件自动安装配置脚本
+# Ubuntu 配置脚本 全功能美化一键安装
 
+## 介绍
 
-废话不多说，先来一张效果图，没图片你们肯定是不会看下去的。
-简单的运行一下脚本，然后喝杯咖啡，打个游戏，做点其他事情，然后就没有然后了
+欢迎使用 Ubuntu 配置脚本 README。本文件将指导您如何使用 `setup.bash` 脚本来配置您的 Ubuntu 系统，安装各种工具和实用程序。该脚本提供了一种方便的方法来安装一系列的软件包，您可以选择进行完整安装，或者根据需要选择特定的软件包进行安装。
 
 
 ![Screenshot from 2017-10-23 22-01-52.png](http://upload-images.jianshu.io/upload_images/3127217-5aba480a92e0229e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -12,117 +11,104 @@ Linux Auto Configuration Script- Linux 软件自动安装配置脚本
 ![Screenshot from 2017-10-23 22-01-35.png](http://upload-images.jianshu.io/upload_images/3127217-259258316bcc280f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-写这个脚本的原因是因为作者手太贱，我有一颗强烈的好奇心，但是同时又有一双︿(￣︶￣)︿非常贱贱的双手，所以当作者在安装了无数个Linux发行版之后，再疲于每一次安装都需要重新安装软件，配置各种环境变量的生活，
-简直苦不堪言，时间就是金钱，但是手贱喜欢换系统怎么办，
-最后实在受不了了，自己写了一个自动化配置安装软件脚本
+![在这里插入图片描述](https://img-blog.csdnimg.cn/direct/be2bd70f02034279ad6ca2dea364a2bb.png)
 
 
-`用法`
-```
-正确打开命令行：
-git clone https://github.com/SickoOrange/UbuntuAutoScript.git
-cd UbuntuAutoScript
-chmod +x setup.sh
-sudo ./ setup.sh
-```
-> 如果你想自动配置你的github ssh 秘钥，只需要在命令上述命令后面追加 -g xxxxxxx@gmail.com即可，生成的秘钥会自动保存在桌面的github_ssh_key.txt文件中。
+## 脚本概述
 
-> sudo ./setup.sh -g xxxxxxx@gmail.com
+`setup.bash` 脚本旨在自动化安装和配置各种软件包。您可以通过运行脚本并按照提示进行选择，来轻松地设置开发环境、办公工具、媒体工具等。脚本支持不同的 Ubuntu 版本，并包含多个功能模块，用户可以根据需要选择安装。
 
+## 使用说明
 
-    脚本已经在Github开源，欢迎随时
-    `Start`
-    `Fork`
-    `Issue`
-作者精力有限，所以还有什么没有想到希望大家多提意见
+### 前提条件
 
-> Github:
-> https://github.com/SickoOrange/UbuntuAutoScript
+在运行脚本之前，请确保您的系统满足以下条件：
 
+1. 运行 Ubuntu 操作系统（支持 14.04、16.04、18.04、20.04、22.04 版本）。
+2. 您具有 sudo 权限。
+3. 系统已连接到互联网。
 
+### 下载和运行脚本
 
-### 这个Bash Script都帮我们干了啥？
+1. 打开终端。
+2. 下载脚本文件：
+   ```bash
+   git clone  https://github.com/lovelyyoshino/UbuntuAutoScript.git
+   ```
+3. 赋予脚本执行权限：
+   ```bash
+   cd UbuntuAutoScript
+   chmod +x setup.bash
+   ```
+4. 运行脚本：
+   ```bash
+   ./setup.bash
+   ```
 
-这里简单列举一下这个Bash Script的功能：
+### 使用脚本
 
-1. 更新系统的软件源
-2. 针对Ubuntu16.04:
-`楼主轻微桌面颜控，所以简单美观的桌面优化是必不可少的了`
-   - 自动下载安装Gnome桌面
-   - 自动下载安装 Dash To Dock插件 (就是类似苹果的软件栏)
-   - 自动下载安装 ARC 风格主题
-   - 自动下载安装 Flat Remix 扁平化图标
-3. 自动配置 Node Js 以及 npm, 开箱即用
-4. 自动下载配置 Oracle JDK，版本  1.8.0_151, 同时自动配置环境变量
-       打开Terminal
-       输入 java -version 验证是否正确安装
-5. 自动安装Gradle 版本构建工具
-6. 自动安装sdkman 用于管理多个软件开发套件的并行版本的工具
-7. 自动安装Typora Linux版本的Markdown写作神器 
-8. 安装常用小工具：
-```
-       Git           -- 版本控制软件
-       Curl         -- 调试网络连接的小工具
-       Gdebi        -- 有些deb软件不能通过默认安装器安装的, 可以试试他
-       Vim          -- 不说了撸代码神器
-       Unzip        -- linux解压zip压缩文件
-       unrar        -- 解压rar
-       jd           -- 命令行解析json工具
-       kolourpaint4 --画图工具 
-```
-9. 自动下载安装常用的软件：
-```
-       Visual Studio Code
-       Genymotion
-       Skype
-       Android Studio
-       IntellijIDEA
- ```
-
-
-#### 最后，时间仓促，目前就想到这么多，以后有什么需要的工具还会继续更新，如果大家有什么想法或者意见可以给我留言， 或者直接在Github上fork.
+运行脚本后，您将看到如下提示：
 
 ```
- 23.10.2017 更新日志
- 1. 添加了网易云音乐
- 2. 添加搜狗输入法
- ps: 搜狗输入法已经安装完毕，但是脚本只是帮你安装到系统了，你需要自己把搜狗输入法添加到fcitx中，如下图
-```
-> ![Screenshot from 2017-10-23 21-56-55.png](http://upload-images.jianshu.io/upload_images/3127217-3430d3da55a7fdfb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-```
-25.10.2017 更新日志
-1. 添加了 linux 命令行 Json解析工具 jd
-2. 添加了 画图板 kolour paint
-3. 修复了window与ubuntu双系统，时间不同步的错误
-4. 增加了自动配置github ssh
-5. 添加解压rar工具
+请按回车键以全部安装，或者输入您想安装的功能编号（用空格分隔，例如：1 3 8）：
 ```
 
-```
-26.10.2017 更新日志
-1. 添加了SDKMAN！是一个用于管理多个软件开发套件的并行版本的工具
-2. 自动安装Gradle版本构建工具
-```
+您有两种选择：
+1. **直接按回车键**：脚本将自动安装所有功能。
+2. **输入数字选项**：根据您的需要选择要安装的功能模块，数字之间用空格分隔。例如，输入 `1 3 8` 表示安装功能 1、3 和 8。
 
-```
-29.10.2017 更新日志
-1.自动安装 maven
-2.自动安装 docker
-    2.1 mysql image
-    2.2 tomcat image
-    2.3 nginx image
-```
+### 可选安装功能列表
 
-```
-30.10.2017 更新日志
-1.自动安装 sqliteman linux下一款轻量级数据库图形化软件
-2. clementine linux下一款受欢迎的开源音乐播放软件
-```
+以下是脚本中可选的安装功能及其对应的数字编号：
+
+1. **系统更新**
+2. **基础工具（如 git、vim、curl、tree、htop、fish、字体等）**
+3. **Docker**
+4. **Terminator 终端**
+5. **搜狗输入法**
+6. **系统监视器**
+7. **GIMP 图像处理**
+8. **VS Code**
+9. **Sublime Text**
+10. **Flameshot 截图**
+11. **Retext Markdown 编辑器**
+12. **mplayer/smplayer 视频播放器**
+13. **Chrome 浏览器**
+14. **Meld 文件比较**
+15. **Kazam 屏幕录像**
+16. **Figlet 命令行艺术字体**
+17. **WhiteSur 主题美化**
+18. **Clash/Clash Nyanpasu 代理工具**
+19. **CLion C/C++ IDE**
+20. **Miniconda**
+21. **Termius SSH 客户端**
+22. **systemback 系统备份**
+23. **CompizConfig 窗口增强**
+24. **Sticky Notes 便签**
+25. **Peek 动图截图**
+26. **Drawio 流程图编辑器**
+27. **PyCharm Python IDE**
+28. **Kdenlive 视频剪辑**
+29. **Cursor AI IDE（需手动下载 AppImage 后运行本脚本）**
+30. **ROS 机器人操作系统（FishROS 脚本）**
+31. **Neofetch 系统信息展示**
+32. **Tailscale 内网穿透**
+33. **zsh + oh-my-zsh + 常用 alias**
+34. **Variety 动态壁纸**
 
 
-> 背景图片地址
-> http://i.imgur.com/nZLDzzk.jpg
+### 示例
 
-> Github地址:  
-> https://github.com/SickoOrange/UbuntuAutoScript
+1. **安装所有功能**：
+   运行脚本并直接按回车键。
+   
+   ```bash
+   ./setup.bash
+   ```
+
+2. **选择性安装功能**：
+   运行脚本并输入数字选项，例如只安装更新系统、Docker 和 VS Code：
+   
+   ```bash
+   ./setup.bash 1 3 8
+   ```
